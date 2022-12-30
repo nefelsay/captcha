@@ -6,7 +6,7 @@ from twocaptcha import TwoCaptcha
 #Функция принимает путь до изображения и отправляет изображение в API rucaptcha, после получения разагаднной капчи, функция возвращает код который находился на капче
 
 def solver(path):
-    solver = TwoCaptcha('ef2bdf3437802248fe13cbd327c48e1c')
+    solver = TwoCaptcha('***********API code***********')
     print('2) Изображение отправленно для разгадывания:')
     result = solver.normal(path)
     print('3) От API пришёл ответ: ', result)
