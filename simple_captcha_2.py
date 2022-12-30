@@ -32,7 +32,6 @@ with webdriver.Chrome() as browser:
             #Если спарсить не получилось, и список name_card не содержит элементов то переходит в блок else
             if len(name_card) > 0:
                 #Репортим о успешном решении
-
                 solver.report(dict_resut['captchaId'], True)
                 print(f"Отправлен репорт о успешном разгадывании. id:{dict_resut['captchaId']}")
                 print('4)',name_card)
