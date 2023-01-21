@@ -43,13 +43,10 @@ proxy_rotator = ProxyRotator(proxies)
 while True:
     proxy = proxy_rotator.get_proxy()
     print(f'using proxy: {proxy}')
-    pr = {}
-    pr.update({'proxy': proxy})
-    try:
-        browser = wire_webdriver.Chrome(seleniumwire_options=pr)
+    prx = {}
+    prx.update({'proxy': proxy})
+    with wire_webdriver.Chrome(seleniumwire_options=prx) as browser:
         browser.get("http://httpbin.org/ip")
         print(browser.find_element(By.TAG_NAME, 'body').text)
         time.sleep(2)
         browser.quit()
-    except Exception as e:
-        print(f'Error: {e}')
