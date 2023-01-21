@@ -25,7 +25,8 @@ class ProxyRotator:
     def get_proxy(self):
         # проверяет нужно ли сменить пр
         # проверяет нужно ли сменить прокси-сервер
-        if self.request_counter % 1 == 0:
+        # где 2, означает, что прокси будут изменены после каждого второго запроса
+        if self.request_counter % 2 == 0:
             self.change_proxy()
         # увеличивает счетчик запросов
         self.request_counter += 1
@@ -49,4 +50,4 @@ while True:
         browser.get("http://httpbin.org/ip")
         print(browser.find_element(By.TAG_NAME, 'body').text)
         time.sleep(2)
-        browser.quit()
+
