@@ -7,19 +7,27 @@ from seleniumwire import webdriver as wire_webdriver
 
 class ProxyRotator:
     def __init__(self, proxies):
+        # создает итератор, который будет перебирать прокси-сервера в цикле
         self.proxies = itertools.cycle(proxies)
+        # хранит текущий используемый прокси-сервер
         self.current_proxy = None
         self.good_proxy = {}
+        # счетчик запросов, для определения когда нужно сменить прокси-сервер
         self.request_counter = 0
 
     def change_proxy(self):
+        # меняет текущий используемый прокси-сервер на следующий в списке
         self.current_proxy = next(self.proxies)
+        # сбрасывает счетчик запросов
         self.request_counter = 0
         return self.current_proxy
 
     def get_proxy(self):
+        # проверяет нужно ли сменить пр
+        # проверяет нужно ли сменить прокси-сервер
         if self.request_counter % 1 == 0:
             self.change_proxy()
+        # увеличивает счетчик запросов
         self.request_counter += 1
         return self.current_proxy
 
@@ -38,8 +46,6 @@ while True:
     pr = {}
     pr.update({'proxy': proxy})
     try:
-        options = webdriver.ChromeOptions()
-        options.add_argument('--proxy-server={}'.format(proxy))
         browser = wire_webdriver.Chrome(seleniumwire_options=pr)
         browser.get("http://httpbin.org/ip")
         print(browser.find_element(By.TAG_NAME, 'body').text)
