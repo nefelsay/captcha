@@ -70,10 +70,10 @@ def main():
         if slider:
             # Нажимаем и держим слайдер.
             action.click_and_hold(slider).perform()
-
             for x in lst:
-                # Двигаем slider по оси X с рандомной задержкой.
+                # Двигаем slider по оси X с рандомной задержкой, не отпуская slider
                 action.move_by_offset(xoffset=x, yoffset=0).pause(random.random() * 3).perform()
+            # Отпускаем slider
             action.release().perform()
             print('Движение завершенно')
             time.sleep(10)
