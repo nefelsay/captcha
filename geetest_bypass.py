@@ -11,11 +11,11 @@ from func_disatance import get_distance_to_center
 
 
 def main():
-    prxoxy = {'proxy': {
+    proxy = {'proxy': {
         'http': "socks5://wRKZPG:snFyfD@91.229.113.96:8000",
         'https': "socks5://wRKZPG:snFyfD@91.229.113.96:8000",
     }}
-    with uc.Chrome(version_main=109, seleniumwire_options=prxoxy) as browser:
+    with uc.Chrome(version_main=109, seleniumwire_options=proxy) as browser:
         url = f'https://captcha-parsinger.ru/geetest?page=3'
         browser.get(url)
 
