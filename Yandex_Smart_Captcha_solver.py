@@ -57,7 +57,10 @@ def main():
         print(f'4) {dict_resut["code"]}')
         #Вставлям необходимую часть словаря dict_resut в котором лежит разгаданное слова с капчи
         browser.find_element(By.CSS_SELECTOR, 'input[class="Textinput-Control"]').send_keys(dict_resut['code'])
-
+        
+        #Возвращаемся к основному коду на странице, для извлечения артикулов
+        browser.switch_to.default_content()
+        
         #Кликаем на кнопку отправить
         browser.find_element(By.CSS_SELECTOR, 'button[class="CaptchaButton CaptchaButton_view_action"]').click()
 
